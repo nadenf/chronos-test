@@ -24,7 +24,7 @@ repositories:
       username: michaelthomson
       password: password
       branch: master
-      tag: 0.4
+      tag: "0.4"
 
 containers:
   - name: database
