@@ -5,12 +5,17 @@ author:
   email: michaelthomson@nbnco.com.au
 
 parameters:
-  debug: false
-  glue_database_name: assn_env_telemetry
-  impairement_location:
-  thresholds:
-    bridge_tap: 0.995
-    others: 1.0
+  - name: debug
+    value: false
+
+  - name: glue_database_name
+    value: assn_env_telemetry
+
+  - name: impairement_location
+    value: test
+
+  - name: thresholds_bridge_tap
+    value: 0.995
 
 repositories:
   - name: project_one
