@@ -1,4 +1,4 @@
-title: Project Oneb
+title: Project Onec
 description: Sample project to test the deployment functionality.
 author:
   name: Michael Thomson
@@ -6,7 +6,7 @@ author:
 
 parameters:
   - name: debug
-    value: false
+    value: "false"
 
   - name: glue_database_name
     value: assn_env_telemetry
@@ -15,7 +15,7 @@ parameters:
     value: test
 
   - name: thresholds_bridge_tap
-    value: 0.995
+    value: "0.995"
 
 repositories:
   - name: project_one
