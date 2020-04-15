@@ -20,11 +20,7 @@ parameters:
 repositories:
   - name: project_one
     git:
-      url: https://git.nbnco.net.au/analytics/one.git
-      username: michaelthomson
-      password: password
-      branch: master
-      tag: "0.4"
+      url: https://github.com/nadenf/pipeline-projectone.git
 
 containers:
   - name: database
