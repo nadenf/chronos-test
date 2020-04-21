@@ -11,8 +11,6 @@ parameters:
     value: cuperf_line_list
   - name: home_path
     value: s3://assn-csa-${env}-telemetry-data-lake/PROD/RAW/CuperfLineList
-  - name: headers_size
-    value: 14
 
 repositories:
   - name: copper_telemetry
