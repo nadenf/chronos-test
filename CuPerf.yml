@@ -15,21 +15,19 @@ parameters:
 repositories:
   - name: copper_telemetry
     git:
-      url: https://git.nbnco.net.au/csa/copper_telemetry.git
-      username: nadenfranciscus
-      password: password
+      url: https://github.com/nadenf/pipeline-projectone
       branch: master
 
 containers:
   - name: collect_cuperf_linelist
     auto:
       repository: copper_telemetry
-      path: apps/src/jobs/collect_cuperf_linelist
+      path: python.py
 
   - name: ingest_cuperf_linelist
     auto:
       repository: copper_telemetry
-      path: apps/src/jobs/ingest_cuperf_linelist
+      path: python.py
 
 pipelines:
   - name: CuPerf Dataset Line List
