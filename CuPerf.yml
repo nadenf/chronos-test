@@ -38,7 +38,7 @@ pipelines:
       triggers:
         - name: wait-for-sns
           sns:
-            topic: topic-arn
+            endpoint: topic-arn
             port: 9200
             url: http;//myfakeure
     actions:
