@@ -39,10 +39,10 @@ pipelines:
       action: collect_cuperf_list
       triggers:
         - name: wait-for-sns
-            sns:
-              topic: topic-arn
-              port: 9200
-              url: http;//myfakeure
+          sns:
+            topic: topic-arn
+            port: 9200
+            url: http;//myfakeure
     actions:
       - name: Collect
         container:
