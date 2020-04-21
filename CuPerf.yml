@@ -1,0 +1,63 @@
+title: Copper Performance Datasets
+description: Collects and ingests Copper Performance datasets to Chronos S3.
+author:
+  name: Naden Franciscus
+  email: nadenfranciscus@nbnco.com.au
+
+parameters:
+  - name: glue_db_name
+    value: assn_${env}_telemetry
+  - name: glue_table_name
+    value: cuperf_line_list
+  - name: home_path
+    value: s3://assn-csa-${env}-telemetry-data-lake/PROD/RAW/CuperfLineList
+  - name: headers_size
+    value: 14
+
+repositories:
+  - name: copper_telemetry
+    git:
+      url: https://git.nbnco.net.au/csa/copper_telemetry.git
+      username: nadenfranciscus
+      password: password
+      branch: master
+
+containers:
+  - name: collect_cuperf_linelist
+    auto:
+      repository: copper_telemetry
+      path: apps/src/jobs/collect_cuperf_linelist
+
+  - name: ingest_cuperf_linelist
+    auto:
+      repository: copper_telemetry
+      path: apps/src/jobs/ingest_cuperf_linelist
+
+pipelines:
+  - name: CuPerf Dataset Line List
+    start:
+      action: collect_cuperf_list
+      triggers:
+        - name: wait-for-sns
+            sns:
+              topic: topic-arn
+              port: 9200
+              url: http;//myfakeure
+    actions:
+      - name: Collect
+        container:
+          name: collect_cuperf_linelist
+
+      - name: Ingest
+        container:
+          name: ingest_cuperf_linelist
+          version: latest
+          resources:
+            cpu: 4
+            memory: 4g
+        dependencies: ["Collect"]
+
+notifications:
+  - name: slack
+    slack:
+      channel: ingest-cuperf-{{env}}
